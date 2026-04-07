@@ -8,6 +8,7 @@ const pageStyle = {
   minHeight: '100vh',
 };
 
+/*
 const containerStyle = {
   width: '100%',
   maxWidth: '1280px',
@@ -21,7 +22,7 @@ const containerStyle = {
   transform: isMobile ? 'none' : 'scale(0.94)',
   transformOrigin: 'top center',
 };
-
+*/
 const sectionStyle = {
   marginTop: '72px',
 };
@@ -538,13 +539,33 @@ export default function SusanaWebsite() {
   const getHash = () => (typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '');
   const [activeHash, setActiveHash] = React.useState(getHash());
 
-  const [isMobile, setIsMobile] = React.useState(isMobile);
+  const [isMobile, setIsMobile] = React.useState(
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
 
   React.useEffect(() => {
-    const handleResize = () => setIsMobile(isMobile);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     window.addEventListener('resize', handleResize);
+    handleResize();
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+      const containerStyle = {
+      width: '100%',
+      maxWidth: '1280px',
+      margin: '0 auto',
+      padding: isMobile ? '8px 16px 48px 16px' : '8px 40px 72px 40px',
+      boxSizing: 'border-box',
+      borderLeft: '1px solid #dddddd',
+      borderRight: '1px solid #dddddd',
+      background: '#ffffff',
+      transform: isMobile ? 'none' : 'scale(0.94)',
+      transformOrigin: 'top center',
+    };
 
   React.useEffect(() => {
     const onHashChange = () => setActiveHash(getHash());
