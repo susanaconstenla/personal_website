@@ -254,7 +254,7 @@ function ProjectSubpage({ project }) {
             {project.slug === 'predictability' && (
               <>
                 <img
-                  src="/pnas.png"
+                  src="/personal-website/pnas.png"
                   style={{
                     width: '120%',
                     maxWidth: '640px',
@@ -272,7 +272,7 @@ function ProjectSubpage({ project }) {
             {project.slug === 'implementation' && (
               <div>
                 <img
-                  src="/fieldwork.jpeg"
+                  src="/personal-website/fieldwork.jpeg"
                   style={{
                     width: '110%',
                     maxWidth: '500px',
@@ -291,7 +291,7 @@ function ProjectSubpage({ project }) {
                 {/* IMAGE 1 */}
                 <div>
                   <img
-                    src="/concept_shift_performance.jpeg"
+                    src="/personal-website/concept_shift_performance.jpeg"
                     style={{
                       width: '120%',
                       maxWidth: '520px',
@@ -307,7 +307,7 @@ function ProjectSubpage({ project }) {
                 {/* IMAGE 2 */}
                 <div>
                   <img
-                    src="/ci_evol.png"
+                    src="/personal-website/ci_evol.png"
                     style={{
                       width: '125%',
                       maxWidth: '520px',
@@ -652,7 +652,7 @@ export default function SusanaWebsite() {
 
                   <div style={{ order: 2, marginTop: '182px' }}>
                     <img
-                      src="/profile.jpeg"
+                      src="/personal-website/profile.jpeg"
                       alt="Susana Constenla-Villoslada"
                       style={{
                         width: '105%',
