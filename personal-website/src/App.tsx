@@ -8,8 +8,6 @@ const pageStyle = {
   minHeight: '100vh',
 };
 
-const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-
 const containerStyle = {
   width: '100%',
   maxWidth: '1280px',
@@ -539,6 +537,14 @@ function PipelineCard({ label, title, summary, href }) {
 export default function SusanaWebsite() {
   const getHash = () => (typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '');
   const [activeHash, setActiveHash] = React.useState(getHash());
+
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   React.useEffect(() => {
     const onHashChange = () => setActiveHash(getHash());
