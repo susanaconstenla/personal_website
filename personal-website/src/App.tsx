@@ -533,6 +533,14 @@ React.useEffect(() => {
   const activeProject = projects.find((p) => p.slug === activeHash);
   const isCV = activeHash === 'cv';
 
+  React.useEffect(() => {
+  if (activeProject) {
+    document.title = `${activeProject.title.split(' ').slice(0, 4).join(' ')}… | Susana`;
+  } else {
+    document.title = 'Susana Constenla';
+  }
+}, [activeProject]);
+
   return (
     <>
       <style>{`
@@ -666,7 +674,7 @@ React.useEffect(() => {
                       alt="Susana Constenla-Villoslada"
                       style={{
                         width: '100%',
-                        maxWidth: isMobile ? '280px' : '550px',
+                        maxWidth: isMobile ? '280px' : '750px',
                         height: 'auto',
                         objectFit: 'cover',
                         borderRadius: '20px',
