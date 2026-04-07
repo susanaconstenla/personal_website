@@ -538,10 +538,10 @@ export default function SusanaWebsite() {
   const getHash = () => (typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '');
   const [activeHash, setActiveHash] = React.useState(getHash());
 
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = React.useState(isMobile);
 
   React.useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(isMobile);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -636,7 +636,7 @@ export default function SusanaWebsite() {
                   style={{
                     display: 'grid',
                     gridTemplateColumns:
-                        window.innerWidth < 768 ? '1fr' : '720px 360px',
+                        isMobile ? '1fr' : '720px 360px',
                     gap: '50px',
                     alignItems: 'start',
                   }}
