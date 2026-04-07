@@ -140,7 +140,7 @@ projectInfo: [
 }
 ];
 
-function ProjectSubpage({ project }) {
+function ProjectSubpage({ project, isMobile }) {
   return (
     <section style={{ paddingBottom: '40px' }}>
       <div style={{ marginBottom: '28px' }}>
@@ -649,7 +649,7 @@ export default function SusanaWebsite() {
           {isCV ? (
             <CVPage />
           ) : activeProject ? (
-            <ProjectSubpage project={activeProject} />
+            <ProjectSubpage project={activeProject} isMobile={isMobile} />
           ) : (
             <>
               <section style={{ paddingBottom: '48px', borderBottom: '1px solid #eaeaea' }}>
