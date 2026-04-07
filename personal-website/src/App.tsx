@@ -246,7 +246,7 @@ function ProjectSubpage({ project }) {
               transform: 'translateX(10px)',
               display: 'flex',
               flexDirection: 'column',
-              gap: '350px',
+              gap: project.slug === 'continuity' ? '350px' : '0px',
             }}
           >
 
