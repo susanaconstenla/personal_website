@@ -305,7 +305,7 @@ function ProjectSubpage({ project, isMobile }) {
                     src={`${import.meta.env.BASE_URL}concept_shift_performance.jpeg`}
                     style={{
                       width: '100%',
-                      maxWidth: '640px',
+                      maxWidth: '700px',
                       borderRadius: '4px',
                       border: '1px solid #ddd',
                     }}
@@ -321,7 +321,7 @@ function ProjectSubpage({ project, isMobile }) {
                     src={`${import.meta.env.BASE_URL}ci_evol.png`}
                     style={{
                       width: '100%',
-                      maxWidth: '520px',
+                      maxWidth: '700px',
                       borderRadius: '4px',
                       border: '1px solid #ddd',
                     }}
