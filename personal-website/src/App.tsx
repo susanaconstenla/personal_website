@@ -467,8 +467,8 @@ function PipelineArrow() {
   return (
     <div
       style={{
-        display: 'flex',
-        alignItems: 'center',
+        display: isMobile ? 'block' : 'flex',
+        gap: isMobile ? '24px' : '18px',
         justifyContent: 'center',
         fontSize: '22px',
         color: '#c2b280',
