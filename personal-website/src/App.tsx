@@ -567,22 +567,25 @@ export default function SusanaWebsite() {
       transformOrigin: 'top center',
     };
 
-  React.useEffect(() => {
-  const onHashChange = () => {
-    setActiveHash(getHash());
+      React.useEffect(() => {
+      const onHashChange = () => {
+        setActiveHash(getHash());
 
-    // 🔥 SCROLL TO TOP
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth', // or 'smooth' if you want animation
-    });
-  };
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth', 
+        });
+      };
 
   window.addEventListener('hashchange', onHashChange);
   onHashChange();
 
   return () => window.removeEventListener('hashchange', onHashChange);
 }, []);
+
+React.useEffect(() => {
+  window.scrollTo(0, 0);
+}, [activeHash]);
 
   const activeProject = projects.find((p) => p.slug === activeHash);
   const isCV = activeHash === 'cv';
@@ -713,7 +716,7 @@ export default function SusanaWebsite() {
                       alt="Susana Constenla-Villoslada"
                       style={{
                         width: '100%',
-                        maxWidth: isMobile ? '280px' : '420px',
+                        maxWidth: isMobile ? '280px' : '460px',
                         height: 'auto',
                         objectFit: 'cover',
                         borderRadius: '20px',
