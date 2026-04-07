@@ -141,107 +141,70 @@ projectInfo: [
 ];
 
 function ProjectSubpage({ project, isMobile }) {
+  const [activeImage, setActiveImage] = React.useState(null);
+
   return (
-    <section style={{ paddingBottom: '40px' }}>
-      <div style={{ marginBottom: '28px' }}>
-        <a href="#work" style={{ fontSize: '14px', color: '#666666' }}>
-          ← Back to research
-        </a>
-      </div>
+    <>
+      <section style={{ paddingBottom: '40px' }}>
+        <div style={{ marginBottom: '28px' }}>
+          <a href="#work" style={{ fontSize: '14px', color: '#666666' }}>
+            ← Back to research
+          </a>
+        </div>
 
-      <h1
-        style={{
-          fontSize: '40px',
-          lineHeight: 1.1,
-          fontWeight: 600,
-          color: '#111111',
-          margin: '0 0 44px 0',
-          maxWidth: '900px',
-        }}
-      >
-        {project.title}
-      </h1>
+        <h1
+          style={{
+            fontSize: '40px',
+            lineHeight: 1.1,
+            fontWeight: 600,
+            color: '#111111',
+            margin: '0 0 44px 0',
+            maxWidth: '900px',
+          }}
+        >
+          {project.title}
+        </h1>
 
-      {/* GRID: TEXT + IMAGE */}
-     <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns:
-            (project.slug === 'predictability' ||
-            project.slug === 'implementation' ||
-            project.slug === 'continuity')
-              ? (isMobile ? '1fr' : '720px 360px')
-              : '1fr',
-          gap: '48px',
-          alignItems: 'start',
-          maxWidth: '1100px',
-        }}
-      >
-        {/* TEXT */}
-        <div>
-          {project.body.map((paragraph, idx) => (
-            <React.Fragment key={idx}>
+        {/* GRID */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '720px 360px',
+            gap: '48px',
+            alignItems: 'start',
+            maxWidth: '1100px',
+          }}
+        >
+          {/* TEXT */}
+          <div>
+            {project.body.map((paragraph, idx) => (
+              <React.Fragment key={idx}>
+                {project.slug === 'implementation' && idx === 1 && (
+                  <h3 style={{ fontSize: '18px', fontWeight: 600, margin: '32px 0 12px', color: '#333' }}>
+                    From predictive modeling to operational early warning systems
+                  </h3>
+                )}
 
-              {/* FIRST SUBTITLE */}
-              {project.slug === 'implementation' && idx === 1 && (
-                <h3
-                  style={{
-                    fontSize: '18px',
-                    fontWeight: 600,
-                    margin: '32px 0 12px 0',
-                    color: '#333333',
-                  }}
-                >
-                  From predictive modeling to operational early warning systems
-                </h3>
-              )}
+                {project.slug === 'implementation' && idx === 3 && (
+                  <h3 style={{ fontSize: '18px', fontWeight: 600, margin: '32px 0 12px', color: '#333' }}>
+                    Embedding implementation within an impact evaluation framework
+                  </h3>
+                )}
 
-              {/* SECOND SUBTITLE */}
-              {project.slug === 'implementation' && idx === 3 && (
-                <h3
-                  style={{
-                    fontSize: '18px',
-                    fontWeight: 600,
-                    margin: '32px 0 12px 0',
-                    color: '#333333',
-                  }}
-                >
-                  Embedding implementation within an impact evaluation framework
-                </h3>
-              )}
-                {/* CONTINUITY SUBTITLE */}
                 {project.slug === 'continuity' && idx === 3 && (
-                  <h3
-                    style={{
-                      fontSize: '18px',
-                      fontWeight: 600,
-                      margin: '32px 0 12px 0',
-                      color: '#333333',
-                    }}
-                  >
+                  <h3 style={{ fontSize: '18px', fontWeight: 600, margin: '32px 0 12px', color: '#333' }}>
                     A bootstrap-based approach grounded in non-asymptotic concentration theory
                   </h3>
                 )}
-              <p
-                style={{
-                  fontSize: '18px',
-                  lineHeight: 1.9,
-                  color: '#444444',
-                  maxWidth: '720px',
-                  margin: '0 0 18px 0',
-                }}
-              >
-                {paragraph}
-              </p>
 
-            </React.Fragment>
-          ))}
-        </div>
+                <p style={{ fontSize: '18px', lineHeight: 1.9, color: '#444', marginBottom: '18px' }}>
+                  {paragraph}
+                </p>
+              </React.Fragment>
+            ))}
+          </div>
 
-        {/* IMAGE (RIGHT COLUMN) */}
-        {(project.slug === 'predictability' ||
-          project.slug === 'implementation' ||
-          project.slug === 'continuity') && (
+          {/* IMAGES */}
           <div
             style={{
               justifySelf: 'end',
@@ -250,44 +213,40 @@ function ProjectSubpage({ project, isMobile }) {
               transform: isMobile ? 'none' : 'translateX(10px)',
               display: 'flex',
               flexDirection: 'column',
-              gap: project.slug === 'continuity' ? '350px' : '0px',
+              gap: project.slug === 'continuity' ? '60px' : '0px',
             }}
           >
-
             {/* PREDICTABILITY */}
-                    {project.slug === 'predictability' && (
-            <div>
-              <img
-                src={`${import.meta.env.BASE_URL}pnas.png`}
-                style={{
-                  width: '100%',
-                  maxWidth: '640px',
-                  border: '1px solid #ddd',
-                  borderRadius: '4px',
-                }}
-              />
-              <p
-                style={{
-                  fontSize: '13px',
-                  color: '#666',
-                  marginTop: '6px',
-                  textAlign: 'right',
-                }}
-              >
-               First page of Constenla-Villoslada et al., PNAS (2025)
-              </p>
-            </div>
-          )}
+            {project.slug === 'predictability' && (
+              <div>
+                <img
+                  src={`${import.meta.env.BASE_URL}pnas.png`}
+                  onClick={() => setActiveImage(`${import.meta.env.BASE_URL}pnas.png`)}
+                  style={{
+                    width: '100%',
+                    maxWidth: '640px',
+                    border: '1px solid #ddd',
+                    borderRadius: '4px',
+                    cursor: 'zoom-in',
+                  }}
+                />
+                <p style={{ fontSize: '13px', color: '#666', marginTop: '6px', textAlign: 'right' }}>
+                  First page of Constenla-Villoslada et al., PNAS (2025)
+                </p>
+              </div>
+            )}
 
             {/* IMPLEMENTATION */}
             {project.slug === 'implementation' && (
               <div>
                 <img
                   src={`${import.meta.env.BASE_URL}fieldwork.jpeg`}
+                  onClick={() => setActiveImage(`${import.meta.env.BASE_URL}fieldwork.jpeg`)}
                   style={{
-                    width: '110%',
+                    width: '100%',
                     maxWidth: '640px',
                     borderRadius: '3px',
+                    cursor: 'zoom-in',
                   }}
                 />
                 <p style={{ fontSize: '13px', color: '#666', marginTop: '6px', textAlign: 'right' }}>
@@ -299,15 +258,16 @@ function ProjectSubpage({ project, isMobile }) {
             {/* CONTINUITY */}
             {project.slug === 'continuity' && (
               <>
-                {/* IMAGE 1 */}
                 <div>
                   <img
                     src={`${import.meta.env.BASE_URL}concept_shift_performance.jpeg`}
+                    onClick={() => setActiveImage(`${import.meta.env.BASE_URL}concept_shift_performance.jpeg`)}
                     style={{
                       width: '100%',
                       maxWidth: '700px',
                       borderRadius: '4px',
                       border: '1px solid #ddd',
+                      cursor: 'zoom-in',
                     }}
                   />
                   <p style={{ fontSize: '13px', color: '#666', marginTop: '6px', textAlign: 'right' }}>
@@ -315,15 +275,16 @@ function ProjectSubpage({ project, isMobile }) {
                   </p>
                 </div>
 
-                {/* IMAGE 2 */}
                 <div>
                   <img
                     src={`${import.meta.env.BASE_URL}ci_evol.png`}
+                    onClick={() => setActiveImage(`${import.meta.env.BASE_URL}ci_evol.png`)}
                     style={{
                       width: '100%',
                       maxWidth: '700px',
                       borderRadius: '4px',
                       border: '1px solid #ddd',
+                      cursor: 'zoom-in',
                     }}
                   />
                   <p style={{ fontSize: '13px', color: '#666', marginTop: '6px', textAlign: 'right' }}>
@@ -332,90 +293,72 @@ function ProjectSubpage({ project, isMobile }) {
                 </div>
               </>
             )}
-
           </div>
-        )}
-
-                  </div>
-
-      {/* RESEARCH OUTPUTS */}
-      <div style={{ marginTop: '48px', maxWidth: '1100px' }}>
-        <div
-          style={{
-            fontWeight: 600,
-            marginBottom: '14px',
-            fontSize: '18px',
-          }}
-        >
-          Research outputs
         </div>
 
-        {project.publications?.map((pub, idx) => (
-          <div
-            key={idx}
-            style={{
-              marginBottom: '16px',
-              paddingLeft: '12px',
-              borderLeft: '2px solid #e6dfc7',
-            }}
-          >
-            <a
-              href={pub.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: '#2a5db0',
-                fontWeight: 500,
-                fontSize: '16px',
-                lineHeight: 1.6,
-                textDecoration: 'none',
-              }}
-            >
-              {pub.title || pub.citation}
-            </a>
-          </div>
-        ))}
-      </div>
-
-      {/* PROJECT CONTEXT AND ENGAGEMENT */}
-      {project.projectInfo && (
+        {/* RESEARCH OUTPUTS */}
         <div style={{ marginTop: '48px', maxWidth: '1100px' }}>
-          <div
-            style={{
-              fontWeight: 600,
-              marginBottom: '14px',
-              fontSize: '18px',
-            }}
-          >
-            Project mentions and engagement
+          <div style={{ fontWeight: 600, marginBottom: '14px', fontSize: '18px' }}>
+            Research outputs
           </div>
 
-          {project.projectInfo.map((item, idx) => (
-            <div
-              key={idx}
-              style={{
-                marginBottom: '12px',
-                paddingLeft: '12px',
-                borderLeft: '2px solid #eee',
-              }}
-            >
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: '#2a5db0',
-                  fontSize: '15px',
-                  textDecoration: 'none',
-                }}
-              >
-                {item.title}
+          {project.publications?.map((pub, idx) => (
+            <div key={idx} style={{ marginBottom: '16px', paddingLeft: '12px', borderLeft: '2px solid #e6dfc7' }}>
+              <a href={pub.link} target="_blank" rel="noopener noreferrer" style={{ color: '#2a5db0' }}>
+                {pub.title || pub.citation}
               </a>
             </div>
           ))}
         </div>
+
+        {/* PROJECT CONTEXT */}
+        {project.projectInfo && (
+          <div style={{ marginTop: '48px', maxWidth: '1100px' }}>
+            <div style={{ fontWeight: 600, marginBottom: '14px', fontSize: '18px' }}>
+              Project mentions and engagement
+            </div>
+
+            {project.projectInfo.map((item, idx) => (
+              <div key={idx} style={{ marginBottom: '12px', paddingLeft: '12px', borderLeft: '2px solid #eee' }}>
+                <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ color: '#2a5db0' }}>
+                  {item.title}
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* LIGHTBOX */}
+      {activeImage && (
+        <div
+          onClick={() => setActiveImage(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+          }}
+        >
+          <img
+            src={activeImage}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '90%',
+              maxHeight: '90%',
+              borderRadius: '6px',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
+            }}
+          />
+        </div>
       )}
-    </section>
+    </>
   );
 }
 
