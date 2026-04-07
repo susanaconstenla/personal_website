@@ -270,7 +270,7 @@ function ProjectSubpage({ project }) {
                   textAlign: 'right',
                 }}
               >
-                First page of Constenla-Villoslada et al., PNAS (2025)
+               {/* First page of Constenla-Villoslada et al., PNAS (2025) */}
               </p>
             </div>
           )}
