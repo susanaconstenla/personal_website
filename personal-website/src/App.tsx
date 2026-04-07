@@ -10,7 +10,7 @@ const pageStyle = {
 
 const containerStyle = {
   width: '100%',
-  maxWidth: '1280px',
+  maxWidth: '1100px',
   margin: '0 auto',
   padding: '8px 40px 72px 40px',
   boxSizing: 'border-box',
