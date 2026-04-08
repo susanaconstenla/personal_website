@@ -101,6 +101,10 @@ const projects = [
 ],
 
 projectInfo: [
+    {
+    title: "Project selected for presentation at the One Health Summit from among initiatives supported by Community Jameel",
+    link: 'https://www.communityjameel.org/news/machine-learning-forecasts-of-child-malnutrition-integrated-into-kenyas-drought-early-warning-system-for-the-first-time',
+  },
   {
     title: "Google.org supports the project's piloting and impact evaluation design under the AI Collaborative for Food Security",
     link: 'https://gol.berkeley.edu/2025/05/22/google-org-invests-in-gol/',
